@@ -1,0 +1,50 @@
+.medicalRecordsContainer {
+    width: 500px;
+    position: relative;
+    left: 35%;
+}
+
+.headerContainer {
+    position: relative;
+    top: 50px;
+    font-size: 25px;
+}
+
+.patientsRecordListContainer {
+    position: relative;
+    top: 50px;
+}
+
+.deleteRecordsByGroup {
+    position: relative;
+    top: 50px;
+    left: 360px;
+}
+
+.levelContainer h3 {
+    color: #00000047;
+    margin: 0;
+}
+
+.patientsList {
+    margin: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    height: 120px;
+    display:flex;
+}
+
+.patientRecord {
+    position: relative;
+    top: 15px;
+}
+
+.patientsList p{
+    margin-bottom: 0.5px;
+}
+
+.deleteRecord {
+    position: relative;
+    left: 200px;
+    top: 40px;
+}
