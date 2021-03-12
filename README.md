@@ -54,3 +54,24 @@ Feel free to use any technology available in the React environment to achieve th
 - Class names should follow modern naming conventions
 - Inputs should have behaviour appropriate to their function
 - Potential future code changes should introduce minimal regression bugs without developers being aware
+
+# Note:
+
+# Below are the Tasks completed
+
+- Validating Email and password.
+- Fetching medical records upon successfull user authentication
+- Grouping records based on 'Type'
+- Sort grouped records based on "last_visit_date" or alphabetically if dates are the same.
+- Added functionality to remove whole groups and/or users.
+- Use of Redux to manage the state of the app and place any HTTP requests in action dispatcher.
+- Prefill User login details if user had checked the "Remember me" checkbox during last login.
+
+# Due to Time Contraint, Couldn't write test cases for the application.
+
+- If Enough time were permitted, i would have written test cases for following logic's
+    - Component flow 
+    - Login validation.
+    - user authentication.
+    - whole groups and/or users delete functionality
+
