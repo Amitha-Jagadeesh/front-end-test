@@ -2,9 +2,11 @@ import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { emailErrorMsg, passwordErrorMsg} from '../../Utility/errorMsg';
 import ValidateFields from '../../Utility/validateFields';
+import Styles from './index.module.css';
+
+const {errorMsg}= Styles;
 
 export default class UserLoginForm extends React.Component {
-
     constructor(props){
         super(props);
         this.state = {
@@ -13,6 +15,7 @@ export default class UserLoginForm extends React.Component {
             emailErrorMsg:'',
             passwordErrorMsg:'',
             checked: true,
+            error: this.props.error || ''
         }
     }
 
@@ -34,6 +37,12 @@ export default class UserLoginForm extends React.Component {
         e.preventDefault();
         const result = await ValidateFields(this.state.username, this.state.password);
         if(result.emailValidationResult && result.passwordValidationResult ){
+            this.setState(prevstate=>{
+                return{
+                    emailErrorMsg:prevstate.emailErrorMsg !== '' && '',
+                    passwordErrorMsg: prevstate.passwordErrorMsg !== '' && ''
+                }
+            })
             const user = {
                 username: this.state.username,
                 password: this.state.password
@@ -50,13 +59,19 @@ export default class UserLoginForm extends React.Component {
                     passwordErrorMsg
                 })
             }else if(!result.emailValidationResult){
-                this.setState({
-                    emailErrorMsg
+                this.setState(prevstate=>{
+                    return{
+                        emailErrorMsg,
+                        passwordErrorMsg: prevstate.passwordErrorMsg !== '' && ''
+                    }
                 })
             }
             else if(!result.passwordValidationResult){
-                this.setState({
-                    passwordErrorMsg
+                this.setState(prevstate=>{
+                    return{
+                        emailErrorMsg: prevstate.emailErrorMsg !== '' && '',
+                        passwordErrorMsg
+                    }
                 })
             }
         }
@@ -81,7 +96,7 @@ export default class UserLoginForm extends React.Component {
                     value={this.state.username}
                     onChange={(e) => this.handleChange(e)}
                     />
-                <span>{this.state.emailErrorMsg}</span>
+                <span className={errorMsg}>{this.state.emailErrorMsg}</span>
                 </Form.Item>
 
                 <Form.Item
@@ -93,7 +108,7 @@ export default class UserLoginForm extends React.Component {
                     value={this.state.password}
                     onChange={(e) => this.handleChange(e)}
                     />
-                <span>{this.state.passwordErrorMsg}</span>
+                <span className={errorMsg}>{this.state.passwordErrorMsg}</span>
                 </Form.Item>
 
                 <Form.Item name="remember">
@@ -110,6 +125,7 @@ export default class UserLoginForm extends React.Component {
                     Log in
                     </Button>
                 </Form.Item>
+                <span className={errorMsg}>{this.props.error}</span>
                 </Form>
             </main>
             </>

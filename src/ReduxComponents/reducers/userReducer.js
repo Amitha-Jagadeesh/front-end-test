@@ -1,8 +1,9 @@
+import {ADD_LOGIN_USER} from '../actions/types'
 const user = {}
 
 const userReducer = (state = user,action)=>{
     switch (action.type) {
-        case "ADD_LOGIN_USER":
+        case ADD_LOGIN_USER:
                 return Object.assign(state,action.user);
         default:
             //prefill the login details.localstorage acts as a backend service
